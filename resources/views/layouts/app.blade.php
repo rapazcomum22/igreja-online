@@ -5,78 +5,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>SGI - Admin</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
     <style>
         body {
             font-family: 'Lato';
         }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
     </style>
 </head>
-<body id="app-layout">
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
+<body>
+<div id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper" class="sidebar hidden-print">
+        <ul class="sidebar-nav">
+            <!--LOGO PORTAL DO SERVIDOR-->
+            <li class="sidebar-brand">
+                <a href="#"><img src="{{ asset('/images/logo-pqn.png') }} " alt="SGI"
+                                 width="220" height="50"/>
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
                 </a>
-            </div>
+            </li>
+            <!--/LOGO PORTAL DO SERVIDOR-->
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                </ul>
+            <!--PERFIL LOGADO-->
+            <li class="sidebar-brand-profile">
+                <div class="dropdown">
+                    <a href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <div class="box-perfil">
+                                Seja Bem Vindo! <strong> {{ Auth::user()->email }}</strong>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <!--/PERFIL LOGDAO-->
 
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}">Login</a></li>
-                        <li><a href="{{ url('/register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+            <!--DIVISOR-->
+            <li style="margin-bottom: 5px"></li>
+            <!--/DIVISOR-->
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                            </ul>
-                        </li>
+            <!--MENU-->
+            <li>
+                <a href="" style="margin-left: -21px;">
+                    <div class="div-icon-container">
+                        <span class="sidebar-menu-fonts-box glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                    </div>
+                    Perfil</a>
+            </li>
+            <li>
+                {{--<a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>--}}
+                <a href="{{ url('/logout') }}" style="margin-left: -21px;">
+                    <div class="div-icon-container">
+                        <span class="sidebar-menu-fonts-box glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    </div>
+                    Logout</a>
+            </li>
+            <!--/MENU-->
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper" class="">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#menu-toggle" id="menu-toggle" class="visible-xs-block">
+                        <div class="btn-mobile">
+                            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                        </div>
+                    </a>
+                    @if (session('alerta'))
+                        <div class="alert alert-{{ session('alerta')['type'] }}">
+                            {{ session('alerta')['msg'] }}
+                        </div>
                     @endif
-                </ul>
+                    @yield('content')
+                </div>
             </div>
         </div>
-    </nav>
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+<script type="text/javascript" src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/checkbox-x.min.js') }}"></script>
+<!-- Menu Toggle Script -->
+<script>
+    $(document).ready(function () {
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+        $(window).resize(function () {
+            if ($(window).width() <= 745) {
+                $("#wrapper").removeClass("toggled");
+            }
+        });
 
-    @yield('content')
-
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+        $("#btn-font-mais").click(function (e) {
+            e.preventDefault();
+            $('body').css('font-size', parseInt($('body').css('font-size')) + 2);
+            $('h3').css('font-size', parseInt($('h3').css('font-size')) + 2);
+        });
+        $("#btn-font-menus").click(function (e) {
+            e.preventDefault();
+            $('body').css('font-size', parseInt($('body').css('font-size')) - 2);
+            $('h3').css('font-size', parseInt($('h3').css('font-size')) - 2);
+        });
+    });
+</script>
+@yield('script')
 </body>
 </html>
