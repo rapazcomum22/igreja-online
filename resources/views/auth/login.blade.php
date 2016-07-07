@@ -8,58 +8,37 @@
     <title>SGI - Login</title>
 
     <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
-          integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/main.css')}}"
-          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
 
     <style>
+        html {
+            background: url("../../../images/background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
         body {
             font-family: 'Lato';
-            height: 100%;
-            background-image: -webkit-linear-gradient(top, #1e9922, #79e083);
-            background-image: linear-gradient(to bottom, #1e9922, #79e083);
-            background-color: #79e083;
         }
-
-        .height-fix {
-            min-height: 100% !important;
-        }
-
-        .gradient-primary {
-
-        }
-
         .painel-cima {
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
         }
-
         .painel-baixo {
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
         }
-
         .padding-config {
             padding: 30px 0;
         }
-
         .col-md-4 {
             background-color: #fff;
-        }
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            /* Set the fixed height of the footer here */
-            height: 60px;
-            background-color: #f5f5f5;
         }
         .fundo {
             content: "";
@@ -81,44 +60,38 @@
             background-attachment: fixed !important;
             opacity: 1.0;
         }
-
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout" class="bg-image">
 <div class="fundo">
-    <div class="container">
-        <div style="padding-top: 150px;">
+    <div class="container" style="padding-top: 15%;padding-bottom: 5%">
             <div class="row">
-                <div class="col-md-offset-4 col-md-4 col-md-offset-4 text-center painel-cima">
+                <div class="col-md-offset-4 col-md-4 col-xs-offset-1 col-xs-10 text-center painel-cima">
                     <img src="{{asset('images/logo-principal.png')}}" width="100%" alt="" class="padding-config">
                 </div>
             </div>
             <div class="row">
                 <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                     {{ csrf_field() }}
-                    <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+                    <div class="col-md-offset-4 col-md-4 col-xs-offset-1 col-xs-10">
+                    <div class="">
                         <label>Usuário:</label>
                         <input id="email" type="text" class="form-control" name="email" value="{{ old('email') }}">
                     </div>
-                    <div class="col-md-offset-4 col-md-4 col-md-offset-4">
+                    <div class="">
                         <label>Senha:</label>
                         <input id="password" type="password" class="form-control" name="password">
                     </div>
-                    <div class="col-md-offset-4 col-md-4 painel-baixo col-md-offset-4 text-right"
+                    <div class="painel-baixo text-right"
                          style="padding-top: 10px; padding-bottom: 10px">
                         <button type="submit" class="btn btn-primary">
                             <i class="fa fa-btn fa-sign-in"></i> Login
                         </button>
                     </div>
+                    </div>
                 </form>
             </div>
-        </div>
     </div>
-    <footer class="footer">
-        <div class="container">
-            <p class="text-muted">Place sticky footer content here.</p>
-        </div>
-    </footer>
 </div>
 </body>
 </html>
