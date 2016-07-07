@@ -227,7 +227,7 @@ NATAL THEME
 .ps-page-header {
   margin: 0 0 4px -14px;
   border-bottom: 1px solid #eee;
-  color: #2557A0;
+  color: #495b6c;
   padding: 0px 0px 8px 25px; }
   .ps-page-header h1 {
     font-size: 18px; }
@@ -245,7 +245,7 @@ NATAL THEME
   border-right: #eeeeee solid 1px; }
   .btn-mobile span {
     font-size: 22px;
-    color: #2759a6; }
+    color: #495b6c; }
 
 .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
   padding: 12px;
@@ -272,7 +272,7 @@ h3 {*/
   /*font-size: 20px; }*/
 
 h3 {
-  color: #2557A0;
+  color: #495b6c;
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
   font-size: 20px; }
@@ -319,7 +319,7 @@ p {
 }
 
 ul.dropdown-menu.dropdown-menu-right > li >a {
-  color: #339FFC;
+  color: #495b6c;
   font-family: 'Raleway', sans-serif;
   font-weight: lighter;
   font-size: 13px;
@@ -327,7 +327,7 @@ ul.dropdown-menu.dropdown-menu-right > li >a {
 }
 
 ul.dropdown-menu.dropdown-menu-right > li >a:hover {
-  color: #3487fc;
+  color: #495b6c;
   font-family: 'Raleway', sans-serif;
   font-weight: lighter;
   font-size: 13px;

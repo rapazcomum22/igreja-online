@@ -19,22 +19,20 @@
             font-family: 'Lato';
         }
     </style>
+    @yield('head')
 </head>
 <body>
 <div id="wrapper">
     <!-- Sidebar -->
     <div id="sidebar-wrapper" class="sidebar hidden-print">
         <ul class="sidebar-nav">
-            <!--LOGO PORTAL DO SERVIDOR-->
             <li class="sidebar-brand">
                 <a href="#"><img src="{{ asset('/images/logo-pqn.png') }} " alt="SGI"
                                  width="220" height="50"/>
-
                 </a>
             </li>
-            <!--/LOGO PORTAL DO SERVIDOR-->
 
-            <!--PERFIL LOGADO-->
+            <!--USUARIO LOGADO-->
             <li class="sidebar-brand-profile">
                 <div class="dropdown">
                     <a href="#" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -44,27 +42,22 @@
                     </a>
                 </div>
             </li>
-            <!--/PERFIL LOGDAO-->
-
-            <!--DIVISOR-->
-            <li style="margin-bottom: 5px"></li>
-            <!--/DIVISOR-->
-
+            <!--/USUARIO LOGDAO-->
             <!--MENU-->
             <li>
-                <a href="" style="margin-left: -21px;">
+                <a href="{{route('main-index')}}" style="margin-left: -21px;">
                     <div class="div-icon-container">
-                        <span class="sidebar-menu-fonts-box glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                        <span class="sidebar-menu-fonts-box glyphicon glyphicon-dashboard" aria-hidden="true"></span>
                     </div>
-                    Perfil</a>
+                    Painel de Controle</a>
             </li>
+
             <li>
-                {{--<a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a>--}}
                 <a href="{{ url('/logout') }}" style="margin-left: -21px;">
                     <div class="div-icon-container">
                         <span class="sidebar-menu-fonts-box glyphicon glyphicon-log-out" aria-hidden="true"></span>
                     </div>
-                    Logout</a>
+                    Sair</a>
             </li>
             <!--/MENU-->
         </ul>
