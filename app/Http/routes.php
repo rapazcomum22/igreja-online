@@ -30,5 +30,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::post('/usuario/adiciona', ['as' => 'usuario-adiciona', 'uses' => 'UsuarioController@adiciona']);
     Route::get('/usuario/edit/{id}', ['as' => 'usuario-edit', 'uses' => 'UsuarioController@edit']);
     Route::post('/usuario/update/{id}', ['as' => 'usuario-update', 'uses' => 'UsuarioController@update']);
+
+//    ROTAS MEMBRO DO SISTEMA
+    Route::get('/membro', ['as' => 'membro-index', 'uses' => 'MembroController@index']);
+    Route::get('/membro/create', ['as' => 'membro-create', 'uses' => 'MembroController@create']);
+    Route::post('/membro/adiciona', ['as' => 'membro-adiciona', 'uses' => 'MembroController@adiciona']);
+    Route::get('/membro/edit/{id}', ['as' => 'membro-edit', 'uses' => 'MembroController@edit']);
+    Route::post('/membro/update/{id}', ['as' => 'membro-update', 'uses' => 'MembroController@update']);
+
+//    ROTAS PADRE
+    Route::get('/padre', ['as' => 'padre-index', 'uses' => 'PadreController@index']);
+    Route::get('/padre/create', ['as' => 'padre-create', 'uses' => 'PadreController@create']);
+    Route::post('/padre/adiciona', ['as' => 'padre-adiciona', 'uses' => 'PadreController@adiciona']);
+    Route::get('/padre/edit/{id}', ['as' => 'padre-edit', 'uses' => 'PadreController@edit']);
+    Route::post('/padre/update/{id}', ['as' => 'padre-update', 'uses' => 'PadreController@update']);
+
 });
 
