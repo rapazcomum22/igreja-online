@@ -45,5 +45,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/padre/edit/{id}', ['as' => 'padre-edit', 'uses' => 'PadreController@edit']);
     Route::post('/padre/update/{id}', ['as' => 'padre-update', 'uses' => 'PadreController@update']);
 
+    //    ROTAS CULTO
+    Route::get('/missa', ['as' => 'missa-index', 'uses' => 'MissaController@index']);
+    Route::get('/missa/create', ['as' => 'missa-create', 'uses' => 'MissaController@create']);
+    Route::post('/missa/adiciona', ['as' => 'missa-adiciona', 'uses' => 'MissaController@adiciona']);
+    Route::get('/missa/edit/{id}', ['as' => 'missa-edit', 'uses' => 'MissaController@edit']);
+    Route::post('/missa/update/{id}', ['as' => 'missa-update', 'uses' => 'MissaController@update']);
+
 });
 

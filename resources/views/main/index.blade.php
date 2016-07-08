@@ -91,10 +91,10 @@
                     <span class="glyphicon-class">Padre</span>
                 </li>
             </a>
-            <a href="{{route('culto-index')}}">
+            <a href="{{route('missa-index')}}">
                 <li>
                     <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
-                    <span class="glyphicon-class">Padre</span>
+                    <span class="glyphicon-class">Missa</span>
                 </li>
             </a>
         </ul>

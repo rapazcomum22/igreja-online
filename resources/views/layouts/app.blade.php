@@ -89,6 +89,7 @@
 <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/checkbox-x.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/mask.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/mask-money.js') }}"></script>
 <!-- Menu Toggle Script -->
 <script>
     $(document).ready(function () {
