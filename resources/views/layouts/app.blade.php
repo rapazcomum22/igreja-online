@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/simple-sidebar.css')}}">
+    <link rel="stylesheet" href="{{ asset('/bootstrap-datepicker/dist/css/bootstrap-datepicker.css') }}" />
     <style>
         body {
             font-family: 'Lato';
@@ -89,7 +90,11 @@
 <script type="text/javascript" src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/checkbox-x.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/js/mask.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/mask-money.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/mascara-money.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bootstrap-datepicker/js/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/bootstrap-datepicker/js/locales/bootstrap-datepicker.pt-BR.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/script.js') }}"></script>
+
 <!-- Menu Toggle Script -->
 <script>
     $(document).ready(function () {

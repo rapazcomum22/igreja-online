@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 ps-page-header">
-            <h1><span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>Painel de Controle - Padre</h1>
+            <h1><span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>Painel de Controle - Padre</h1>
         </div>
     </div>
     <div class="col-md-12">
@@ -30,8 +30,6 @@
                                 Nome: Padre <span>{{$m->nome}}</span> <br>
                                 Igreja: <span>{{$m->PadreIgreja->razao_social}}</span> <br>
                                 Na Igreja desde : <span>{{$m->data}}</span>
-                                {{--Profissão: <span>{{$m->profissao}}</span> <br>--}}
-                                {{--Igreja: <span>{{$m->MembroIgreja->razao_social}}</span> <br>--}}
                             </p>
                             <div class="col-md-2 col-xs-6">
                                 <a href="{{route('padre-edit', ['id' => $m->id])}}"class="btn btn-sm btn-block btn-warning"><i class="glyphicon glyphicon-edit"></i> Editar</a>

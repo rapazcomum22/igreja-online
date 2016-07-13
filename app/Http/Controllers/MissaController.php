@@ -12,46 +12,42 @@ use App\Http\Requests;
 
 class MissaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $query = Missa::all();
-        return view('missa.index', ['model' => $query]);
+        $dataInicio = $request->get('data_inicial');
+        $dataFinal = $request->get('data_final');
+        $query = Missa::getMissa($dataInicio,$dataFinal);
+        $queryPadre = Padre::all();
+        $queryIgreja = Igreja::all();
+        return view('missa.index', ['model' => $query, 'getPadre' => $queryPadre, 'getIgreja' => $queryIgreja]);
     }
 
     public function create()
     {
         $igreja       = Igreja::all();
         $padre        = Padre::all();
-        $dias_semana  = Dias_Semana::all();
-        return view('missa.create',['igreja'=> $igreja, 'padre' => $padre, 'semana' =>$dias_semana]);
+        return view('missa.create',['igreja'=> $igreja, 'padre' => $padre]);
     }
 
     public function adiciona(Request $request)
     {
-        $mensagem = 'Membro registrado com sucesso';
-        $u = new Membro();
-        $u->nome            = $request->get('nome');
-        $u->nascimento      = date('d/m/Y',strtotime($request->get('nascimento')));
-        $u->id_sexo            = $request->get('sexo');
-        $u->id_estado_civil    = $request->get('estado_civil');
-        $u->id_municipio       = $request->get('municipio');
-        $u->id_grau_instrucao    = $request->get('grau');
+        $mensagem = 'Missa registrada com sucesso';
+        $u = new Missa();
+        $u->id_padre           = $request->get('padre');
         $u->id_igreja          = $request->get('igreja');
-        $u->endereco        = $request->get('endereco');
-        $u->bairro          = $request->get('bairro');
-        $u->cep             = $request->get('cep');
-        $u->numero             = $request->get('numero');
-        $u->cpf             = $request->get('cpf');
-        $u->rg              = $request->get('rg');
-        $u->fone            = $request->get('fone');
-        $u->email           = $request->get('email');
-        $u->profissao       = $request->get('profissao');
-        $u->nome_mae        = $request->get('nome_mae');
+        $u->diacono            = $request->get('diacono');
+        $u->data_missa         = $request->get('data_missa');
+        $u->horario            = $request->get('horario');
+        $u->total_dizimo       = $request->get('total_dizimo');
+        $u->total_oferta       = $request->get('total_oferta');
+        $u->total_arrecadacao  = $request->get('total_arrecadacao_hide');
         $u->save();
 
         return redirect(route('missa-index'))->with('alerta', ['type' => 'success', 'msg' => $mensagem]);
     }
 
+
+    
     public function edit($id)
     {
         $query = Membro::find($id);

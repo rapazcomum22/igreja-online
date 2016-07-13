@@ -9,7 +9,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 ps-page-header">
-            <h1><span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>Painel de Controle - Membro</h1>
+            <h1><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Painel de Controle - Membro</h1>
         </div>
     </div>
     <div class="col-md-12">
